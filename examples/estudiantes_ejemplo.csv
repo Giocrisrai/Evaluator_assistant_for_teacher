@@ -1,0 +1,6 @@
+nombre,email,repo_url,nivel
+Juan Pérez,juan.perez@universidad.cl,https://github.com/kedro-org/kedro-starters,intermedio
+María García,maria.garcia@universidad.cl,https://github.com/kedro-org/kedro-examples,avanzado
+Carlos López,carlos.lopez@universidad.cl,https://github.com/octocat/Hello-World,principiante
+Ana Martínez,ana.martinez@universidad.cl,https://github.com/kedro-org/kedro-starters,intermedio
+Luis Rodríguez,luis.rodriguez@universidad.cl,https://github.com/kedro-org/kedro-examples,avanzado

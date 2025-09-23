@@ -1,0 +1,32 @@
+# Ejemplos de repositorios para probar el sistema de evaluación
+# Una URL por línea
+
+# Proyectos de Machine Learning / Data Science
+https://github.com/microsoft/forecasting
+https://github.com/ageron/handson-ml3
+https://github.com/fastai/fastai
+
+# Proyectos Kedro (para rúbrica ML)
+https://github.com/kedro-org/kedro-starters
+https://github.com/kedro-org/kedro-examples
+
+# Proyectos Python General
+https://github.com/psf/requests
+https://github.com/pallets/flask
+https://github.com/django/django
+
+# Proyectos React (para rúbrica React)
+https://github.com/facebook/create-react-app
+https://github.com/vercel/next.js
+https://github.com/gatsbyjs/gatsby
+
+# Proyectos más pequeños para pruebas rápidas
+https://github.com/octocat/Hello-World
+https://github.com/github/gitignore
+
+# Proyectos educativos
+https://github.com/TheAlgorithms/Python
+https://github.com/donnemartin/system-design-primer
+
+# Proyecto personal de ejemplo (cambiar por uno real)
+# https://github.com/tu-usuario/tu-proyecto-ml

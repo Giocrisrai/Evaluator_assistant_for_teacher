@@ -1,0 +1,345 @@
+{
+  "evaluacion_basica": {
+    "repositorio": "https://github.com/kedro-org/kedro-starters",
+    "fecha_evaluacion": "2025-09-23T14:56:49.057942",
+    "criterios": [
+      {
+        "criterio": "Estructura y Configuración del Proyecto Kedro",
+        "puntuacion": 80,
+        "nota": 5.8,
+        "retroalimentacion": "El proyecto Kedro presenta una estructura de directorios adecuada y archivos esenciales como README, requirements y .gitignore. Sin embargo, se observan algunas omisiones menores en la organización de los pipelines y la documentación de los mismos. La presencia de múltiples proyectos dentro del repositorio puede generar confusión sobre la estructura general y su propósito. Se recomienda consolidar la estructura y mejorar la claridad en la documentación.",
+        "evidencias": [
+          ".github/ISSUE_TEMPLATE/bug-report.md",
+          ".github/workflows/all-checks.yml",
+          "README.md",
+          "requirements.txt",
+          "spaceflights-pyspark/{{ cookiecutter.repo_name }}/src/{{ cookiecutter.python_package }}/pipelines/data_processing/pipeline.py",
+          "spaceflights-pandas/{{ cookiecutter.repo_name }}/src/{{ cookiecutter.python_package }}/pipelines/data_science/pipeline.py"
+        ],
+        "sugerencias": [
+          "Consolidar la estructura de directorios para evitar confusiones entre los diferentes proyectos (spaceflights-pyspark, databricks-iris, etc.).",
+          "Mejorar la documentación de los pipelines, incluyendo descripciones claras de cada uno y su propósito dentro del flujo de trabajo."
+        ]
+      },
+      {
+        "criterio": "Implementación del Catálogo de Datos",
+        "puntuacion": 80,
+        "nota": 5.8,
+        "retroalimentacion": "Se han encontrado configuraciones de datasets en el catálogo, pero no se ha verificado la correcta implementación de al menos tres datasets. Aunque hay archivos de configuración de catálogo presentes, se requiere una revisión más exhaustiva para asegurar que todos los datasets estén correctamente documentados y accesibles en el catálogo. La estructura de directorios sugiere que hay múltiples datasets, pero la falta de claridad en la implementación específica de cada uno limita la evaluación a un alto desempeño con mínimas omisiones.",
+        "evidencias": [
+          "astro-airflow-iris/{{ cookiecutter.repo_name }}/conf/base/catalog.yml",
+          "databricks-iris/{{ cookiecutter.repo_name }}/conf/base/catalog.yml",
+          "spaceflights-pandas/{{ cookiecutter.repo_name }}/conf/base/catalog.yml"
+        ],
+        "sugerencias": [
+          "Asegúrate de que cada dataset esté claramente documentado en el catálogo, incluyendo descripciones, tipos de datos y ejemplos de uso.",
+          "Verifica que los datasets estén accesibles y que se puedan cargar sin errores desde el catálogo configurado."
+        ]
+      },
+      {
+        "criterio": "Desarrollo de Nodos y Funciones",
+        "puntuacion": 80,
+        "nota": 5.8,
+        "retroalimentacion": "El proyecto presenta una buena estructura modular con nodos y funciones que cumplen en gran medida con los criterios establecidos. Sin embargo, se han encontrado algunas omisiones menores en la documentación y el manejo de errores. Las funciones tienen docstrings, pero podrían beneficiarse de ejemplos más claros y de un formato más detallado. Además, el manejo de errores no es consistente en todas las funciones, lo que puede llevar a confusiones en el uso de las mismas.",
+        "evidencias": [
+          "astro-airflow-iris/{{ cookiecutter.repo_name }}/src/{{ cookiecutter.python_package }}/pipelines/data_engineering/nodes.py",
+          "astro-airflow-iris/{{ cookiecutter.repo_name }}/src/{{ cookiecutter.python_package }}/pipelines/data_science/nodes.py",
+          "spaceflights-pandas/{{ cookiecutter.repo_name }}/src/{{ cookiecutter.python_package }}/pipelines/data_processing/nodes.py",
+          "spaceflights-pyspark/{{ cookiecutter.repo_name }}/src/{{ cookiecutter.python_package }}/pipelines/data_processing/nodes.py"
+        ],
+        "sugerencias": [
+          "Incluir ejemplos en los docstrings para ilustrar el uso de las funciones.",
+          "Asegurarse de que todas las funciones manejen errores de manera consistente, utilizando excepciones específicas y mensajes claros."
+        ]
+      },
+      {
+        "criterio": "Construcción de Pipelines",
+        "puntuacion": 80,
+        "nota": 5.8,
+        "retroalimentacion": "El proyecto presenta una estructura de directorios bien organizada que sigue las fases del modelo CRISP-DM, lo que indica un alto desempeño en la construcción de pipelines. Sin embargo, se observan algunas omisiones menores en la documentación de las dependencias entre las fases, lo que podría dificultar la comprensión del flujo de trabajo para nuevos desarrolladores. La inclusión de diagramas o descripciones más detalladas sobre cómo cada fase se conecta con las demás sería beneficiosa.",
+        "evidencias": [
+          "spaceflights-pyspark/{{ cookiecutter.repo_name }}/src/{{ cookiecutter.python_package }}/pipelines/data_processing",
+          "spaceflights-pyspark/{{ cookiecutter.repo_name }}/src/{{ cookiecutter.python_package }}/pipelines/data_science",
+          "astro-airflow-iris/{{ cookiecutter.repo_name }}/src/{{ cookiecutter.python_package }}/pipelines/data_engineering",
+          "databricks-iris/{{ cookiecutter.repo_name }}/src/{{ cookiecutter.python_package }}/pipelines/iris"
+        ],
+        "sugerencias": [
+          "Incluir documentación más detallada sobre las dependencias entre las fases del pipeline.",
+          "Agregar diagramas de flujo que ilustren cómo se interconectan las diferentes etapas del proceso CRISP-DM."
+        ]
+      },
+      {
+        "criterio": "Análisis Exploratorio de Datos (EDA)",
+        "puntuacion": 80,
+        "nota": 5.8,
+        "retroalimentacion": "El análisis exploratorio de datos (EDA) realizado es sólido y muestra un alto desempeño. Se han incluido visualizaciones y análisis de patrones que son relevantes para la comprensión de los datos. Sin embargo, se observan algunas omisiones menores en la profundidad del análisis, como la falta de un análisis de correlación más exhaustivo o la inclusión de visualizaciones adicionales que podrían haber proporcionado más contexto sobre las relaciones entre variables. En general, el trabajo es bueno, pero hay espacio para mejorar en la exhaustividad del análisis.",
+        "evidencias": [
+          "astro-airflow-iris/{{ cookiecutter.repo_name }}/data/01_raw/iris.csv",
+          "databricks-iris/{{ cookiecutter.repo_name }}/data/01_raw/iris.csv",
+          "spaceflights-pandas/{{ cookiecutter.repo_name }}/data/01_raw/companies.csv",
+          "spaceflights-pandas/{{ cookiecutter.repo_name }}/data/01_raw/reviews.csv",
+          "spaceflights-pyspark/{{ cookiecutter.repo_name }}/data/01_raw/shuttles.xlsx",
+          "spaceflights-pandas/{{ cookiecutter.repo_name }}/notebooks/.gitkeep",
+          "databricks-iris/{{ cookiecutter.repo_name }}/notebooks/.gitkeep"
+        ],
+        "sugerencias": [
+          "Incluir un análisis de correlación más detallado entre las variables para identificar relaciones significativas.",
+          "Agregar visualizaciones adicionales, como gráficos de dispersión o diagramas de caja, para explorar mejor la distribución de los datos y detectar posibles outliers.",
+          "Documentar el proceso de EDA en un notebook o informe para facilitar la comprensión y la reproducibilidad del análisis."
+        ]
+      },
+      {
+        "criterio": "Limpieza y Tratamiento de Datos",
+        "puntuacion": 80,
+        "nota": 5.8,
+        "retroalimentacion": "El proyecto presenta un manejo adecuado de missing values y outliers, pero se observan algunas omisiones en la documentación y en la implementación de estrategias diferenciadas. Se identifican métodos para tratar missing values, como la imputación, pero no se especifican claramente las técnicas utilizadas para los outliers. Además, la documentación podría ser más detallada en cuanto a las decisiones tomadas durante el proceso de limpieza de datos.",
+        "evidencias": [
+          "astro-airflow-iris/{{ cookiecutter.repo_name }}/src/{{ cookiecutter.python_package }}/pipelines/data_engineering/nodes.py",
+          "spaceflights-pandas/{{ cookiecutter.repo_name }}/src/{{ cookiecutter.python_package }}/pipelines/data_processing/nodes.py"
+        ],
+        "sugerencias": [
+          "Incluir una sección en la documentación que detalle las estrategias específicas utilizadas para el manejo de missing values y outliers.",
+          "Implementar visualizaciones que muestren la distribución de los datos antes y después del tratamiento de outliers para facilitar la comprensión del impacto de las decisiones tomadas."
+        ]
+      },
+      {
+        "criterio": "Transformación y Feature Engineering",
+        "puntuacion": 80,
+        "nota": 5.8,
+        "retroalimentacion": "El proyecto presenta un buen nivel de transformación y feature engineering, con varias técnicas aplicadas para mejorar la calidad de los datos. Sin embargo, se observan algunas omisiones en la justificación de ciertas transformaciones y en la creatividad del feature engineering. Se recomienda incluir más explicaciones sobre las decisiones tomadas en el proceso de transformación y explorar técnicas más avanzadas o innovadoras para la creación de nuevas características.",
+        "evidencias": [
+          "spaceflights-pyspark/{{ cookiecutter.repo_name }}/src/{{ cookiecutter.python_package }}/pipelines/data_processing/nodes.py",
+          "spaceflights-pandas/{{ cookiecutter.repo_name }}/src/{{ cookiecutter.python_package }}/pipelines/data_processing/nodes.py",
+          "databricks-iris/{{ cookiecutter.repo_name }}/src/{{ cookiecutter.python_package }}/pipelines/iris/nodes.py"
+        ],
+        "sugerencias": [
+          "Incluir documentación más detallada sobre las transformaciones aplicadas y su justificación.",
+          "Explorar técnicas de feature engineering más avanzadas, como la creación de interacciones entre variables o el uso de técnicas de reducción de dimensionalidad."
+        ]
+      },
+      {
+        "criterio": "Identificación de Targets para ML",
+        "puntuacion": 80,
+        "nota": 5.8,
+        "retroalimentacion": "El proyecto presenta una identificación adecuada de los targets para los modelos de Machine Learning, pero hay algunas áreas que podrían mejorarse. Se observa que se han definido targets claros para la clasificación y regresión, sin embargo, la justificación de la elección de estos targets no está suficientemente documentada. Sería beneficioso incluir un análisis más profundo sobre por qué se eligieron estos targets y cómo se relacionan con los objetivos del proyecto. Además, se podría incluir una discusión sobre la calidad y la relevancia de los datos utilizados para entrenar los modelos.",
+        "evidencias": [
+          "astro-airflow-iris/{{ cookiecutter.repo_name }}/data/01_raw/iris.csv",
+          "databricks-iris/{{ cookiecutter.repo_name }}/data/01_raw/iris.csv",
+          "spaceflights-pandas/{{ cookiecutter.repo_name }}/data/01_raw/companies.csv",
+          "spaceflights-pandas/{{ cookiecutter.repo_name }}/data/01_raw/reviews.csv"
+        ],
+        "sugerencias": [
+          "Incluir una sección en la documentación que explique la elección de los targets y su relevancia para el problema a resolver.",
+          "Realizar un análisis de la calidad de los datos y su impacto en la selección de los targets."
+        ]
+      },
+      {
+        "criterio": "Documentación y Notebooks",
+        "puntuacion": 80,
+        "nota": 5.8,
+        "retroalimentacion": "La documentación y los notebooks están bien estructurados y se observa un esfuerzo por seguir el modelo CRISP-DM. Sin embargo, hay algunas omisiones menores en la explicación de ciertos pasos y en la claridad de algunos comentarios en el código. La presencia de un README, requisitos y .gitignore es positiva, pero se podría mejorar la claridad de la documentación para facilitar la comprensión del flujo del proyecto.",
+        "evidencias": [
+          "README.md",
+          "spaceflights-pandas/{{ cookiecutter.repo_name }}/notebooks/.gitkeep",
+          "databricks-iris/{{ cookiecutter.repo_name }}/notebooks/.gitkeep",
+          "spaceflights-pyspark/{{ cookiecutter.repo_name }}/notebooks/.gitkeep"
+        ],
+        "sugerencias": [
+          "Incluir más comentarios explicativos en los notebooks para clarificar el propósito de cada celda.",
+          "Agregar ejemplos de salida o visualizaciones en los notebooks para ilustrar mejor los resultados de cada etapa del proceso."
+        ]
+      },
+      {
+        "criterio": "Reproducibilidad y Mejores Prácticas",
+        "puntuacion": 80,
+        "nota": 5.8,
+        "retroalimentacion": "El proyecto presenta una buena estructura de directorios y archivos que facilitan la reproducibilidad. Se han incluido archivos esenciales como README, requirements y .gitignore, lo cual es positivo. Sin embargo, se observan algunas omisiones en la documentación y en la claridad de los pasos necesarios para la ejecución del proyecto. La falta de ejemplos claros de cómo ejecutar los scripts y la ausencia de un entorno de desarrollo reproducible (como un Dockerfile o un entorno virtual bien definido) limitan la puntuación máxima.",
+        "evidencias": [
+          ".github/ISSUE_TEMPLATE/bug-report.md",
+          ".github/workflows/all-checks.yml",
+          "README.md",
+          "requirements.txt",
+          "spaceflights-pyspark/{{ cookiecutter.repo_name }}/src/{{ cookiecutter.python_package }}/pipelines/data_processing/pipeline.py"
+        ],
+        "sugerencias": [
+          "Incluir un archivo Dockerfile o instrucciones detalladas sobre cómo configurar el entorno de desarrollo para asegurar que otros puedan reproducir el proyecto sin problemas.",
+          "Agregar ejemplos en el README sobre cómo ejecutar los scripts y pipelines, así como una guía paso a paso para los usuarios que no estén familiarizados con el proyecto."
+        ]
+      }
+    ],
+    "nota_final": 5.8,
+    "resumen_general": "\n📊 RESUMEN GENERAL DE LA EVALUACIÓN\n\nNota Final: 5.80/7.0\n\n🟢 Fortalezas (10 criterios):\n- Estructura y Configuración del Proyecto Kedro: 80% - El proyecto Kedro presenta una estructura de directorios adecuada y archivos esenciales como README,...\n- Implementación del Catálogo de Datos: 80% - Se han encontrado configuraciones de datasets en el catálogo, pero no se ha verificado la correcta i...\n- Desarrollo de Nodos y Funciones: 80% - El proyecto presenta una buena estructura modular con nodos y funciones que cumplen en gran medida c...\n",
+    "tiempo_evaluacion": 193.868668
+  },
+  "insights": [
+    {
+      "tipo": "recomendacion",
+      "titulo": "Mejorar la Documentación de los Pipelines",
+      "descripcion": "Incluir documentación más detallada sobre las dependencias entre las fases del pipeline. Esto puede incluir descripciones de cómo cada fase se conecta con las demás, así como ejemplos de entrada y salida para cada nodo. Se recomienda utilizar diagramas de flujo para ilustrar visualmente el proceso CRISP-DM y las relaciones entre las etapas.",
+      "criterios_afectados": [
+        "Construcción de Pipelines"
+      ],
+      "gravedad": "alta",
+      "evidencias": [
+        "80%",
+        "Omisiones menores en la documentación de las dependencias entre las fases"
+      ]
+    },
+    {
+      "tipo": "recomendacion",
+      "titulo": "Documentar Estrategias de Limpieza de Datos",
+      "descripcion": "Incluir una sección en la documentación que detalle las estrategias específicas utilizadas para el manejo de missing values y outliers. Además, implementar visualizaciones que muestren la distribución de los datos antes y después del tratamiento de outliers para facilitar la comprensión del impacto de las decisiones tomadas.",
+      "criterios_afectados": [
+        "Limpieza y Tratamiento de Datos"
+      ],
+      "gravedad": "alta",
+      "evidencias": [
+        "80%",
+        "Omisiones en la documentación y en la implementación de estrategias diferenciadas"
+      ]
+    },
+    {
+      "tipo": "recomendacion",
+      "titulo": "Incluir Análisis de Correlación y Visualizaciones en EDA",
+      "descripcion": "Agregar un análisis de correlación más detallado entre las variables para identificar relaciones significativas. Además, incluir visualizaciones adicionales, como gráficos de dispersión o diagramas de caja, para explorar mejor la distribución de los datos y detectar posibles outliers. Documentar el proceso de EDA en un notebook o informe para facilitar la comprensión y la reproducibilidad del análisis.",
+      "criterios_afectados": [
+        "Análisis Exploratorio de Datos (EDA)"
+      ],
+      "gravedad": "alta",
+      "evidencias": [
+        "80%",
+        "Falta de un análisis de correlación más exhaustivo"
+      ]
+    },
+    {
+      "tipo": "recomendacion",
+      "titulo": "Justificación de Targets y Análisis de Calidad de Datos",
+      "descripcion": "Incluir una sección en la documentación que explique la elección de los targets y su relevancia para el problema a resolver. Realizar un análisis de la calidad de los datos y su impacto en la selección de los targets, lo que ayudará a comprender mejor las decisiones tomadas durante el desarrollo del modelo.",
+      "criterios_afectados": [
+        "Identificación de Targets para ML"
+      ],
+      "gravedad": "alta",
+      "evidencias": [
+        "80%",
+        "La justificación de la elección de estos targets no está suficientemente documentada"
+      ]
+    },
+    {
+      "tipo": "recomendacion",
+      "titulo": "Incluir Ejemplos y Manejo de Errores en Funciones",
+      "descripcion": "Incluir ejemplos en los docstrings para ilustrar el uso de las funciones y asegurarse de que todas las funciones manejen errores de manera consistente, utilizando excepciones específicas y mensajes claros. Esto no solo mejorará la comprensión del código, sino que también facilitará su uso por parte de otros desarrolladores.",
+      "criterios_afectados": [
+        "Desarrollo de Nodos y Funciones"
+      ],
+      "gravedad": "alta",
+      "evidencias": [
+        "80%",
+        "Omisiones menores en la documentación y el manejo de errores"
+      ]
+    },
+    {
+      "tipo": "recomendacion",
+      "titulo": "Incluir un Entorno de Desarrollo Reproducible",
+      "descripcion": "Incluir un archivo Dockerfile o instrucciones detalladas sobre cómo configurar el entorno de desarrollo para asegurar que otros puedan reproducir el proyecto sin problemas. Esto puede incluir la creación de un entorno virtual con todas las dependencias necesarias y ejemplos claros de cómo ejecutar los scripts y pipelines.",
+      "criterios_afectados": [
+        "Reproducibilidad y Mejores Prácticas"
+      ],
+      "gravedad": "alta",
+      "evidencias": [
+        "80%",
+        "Falta de ejemplos claros de cómo ejecutar los scripts"
+      ]
+    }
+  ],
+  "recomendaciones": [
+    {
+      "titulo": "Mejorar la Documentación de los Pipelines",
+      "descripcion": "Es crucial que cada pipeline esté bien documentado para que otros desarrolladores puedan entender su propósito y funcionamiento. Esto incluye descripciones claras de cada pipeline, así como la documentación de las dependencias entre ellos.",
+      "prioridad": "alta",
+      "tiempo_estimado": "3-4 horas",
+      "recursos": [
+        "Pipelines en Kedro: https://docs.kedro.org/en/stable/nodes_and_pipelines/pipelines.html",
+        "Diseño de pipelines: https://docs.kedro.org/en/stable/nodes_and_pipelines/pipelines.html#designing-pipelines"
+      ],
+      "pasos": [
+        "Revisar cada pipeline existente y escribir una breve descripción de su propósito y funcionamiento.",
+        "Documentar las dependencias entre los pipelines, indicando cómo se relacionan y qué datos utilizan.",
+        "Agregar diagramas de flujo que ilustren el flujo de datos entre los diferentes pipelines."
+      ],
+      "criterio_relacionado": "Construcción de Pipelines",
+      "nivel_dificultad": "intermedio"
+    },
+    {
+      "titulo": "Documentar el Catálogo de Datos",
+      "descripcion": "Asegúrate de que cada dataset en el catálogo esté claramente documentado, incluyendo descripciones, tipos de datos y ejemplos de uso. Esto facilitará la comprensión y el uso de los datos por otros desarrolladores.",
+      "prioridad": "alta",
+      "tiempo_estimado": "2-3 horas",
+      "recursos": [
+        "Catálogo de datos Kedro: https://docs.kedro.org/en/stable/data/data_catalog.html",
+        "Tipos de datasets: https://docs.kedro.org/en/stable/data/data_catalog.html#dataset-types"
+      ],
+      "pasos": [
+        "Revisar el archivo catalog.yml y asegurarte de que cada dataset tenga una descripción clara.",
+        "Incluir ejemplos de uso para cada dataset, mostrando cómo se pueden cargar y utilizar en el código.",
+        "Verificar que todos los datasets estén accesibles y que no haya errores al intentar cargarlos."
+      ],
+      "criterio_relacionado": "Implementación del Catálogo de Datos",
+      "nivel_dificultad": "intermedio"
+    },
+    {
+      "titulo": "Mejorar la Documentación de Nodos y Funciones",
+      "descripcion": "Es importante que los nodos y funciones tengan una documentación adecuada, incluyendo ejemplos claros de uso y un manejo de errores consistente. Esto ayudará a otros desarrolladores a entender cómo utilizar tus funciones correctamente.",
+      "prioridad": "alta",
+      "tiempo_estimado": "3-4 horas",
+      "recursos": [
+        "Creación de nodos: https://docs.kedro.org/en/stable/nodes_and_pipelines/nodes.html",
+        "Mejores prácticas: https://docs.kedro.org/en/stable/nodes_and_pipelines/nodes.html#best-practices"
+      ],
+      "pasos": [
+        "Revisar cada nodo y función para asegurarte de que tengan docstrings completos y claros.",
+        "Incluir ejemplos en los docstrings que ilustren cómo se utilizan las funciones.",
+        "Implementar un manejo de errores consistente, utilizando excepciones específicas y mensajes claros."
+      ],
+      "criterio_relacionado": "Desarrollo de Nodos y Funciones",
+      "nivel_dificultad": "intermedio"
+    },
+    {
+      "titulo": "Profundizar en el Análisis Exploratorio de Datos (EDA)",
+      "descripcion": "Mejora la profundidad del análisis exploratorio de datos, incluyendo un análisis de correlación más exhaustivo y visualizaciones adicionales que proporcionen más contexto sobre las relaciones entre variables.",
+      "prioridad": "alta",
+      "tiempo_estimado": "3-4 horas",
+      "recursos": [
+        "EDA con pandas: https://pandas.pydata.org/docs/user_guide/index.html",
+        "Visualización con matplotlib: https://matplotlib.org/stable/tutorials/introductory/usage.html",
+        "EDA con seaborn: https://seaborn.pydata.org/tutorial.html"
+      ],
+      "pasos": [
+        "Realizar un análisis de correlación utilizando la función corr() de pandas y visualizarlo con un heatmap.",
+        "Agregar gráficos de dispersión y diagramas de caja para explorar mejor la distribución de los datos y detectar outliers.",
+        "Documentar el proceso de EDA en un notebook o informe para facilitar la comprensión y la reproducibilidad del análisis."
+      ],
+      "criterio_relacionado": "Análisis Exploratorio de Datos (EDA)",
+      "nivel_dificultad": "intermedio"
+    },
+    {
+      "titulo": "Documentar Estrategias de Limpieza de Datos",
+      "descripcion": "Incluye una sección en la documentación que detalle las estrategias específicas utilizadas para el manejo de missing values y outliers. Esto ayudará a otros a entender las decisiones tomadas durante el proceso de limpieza.",
+      "prioridad": "alta",
+      "tiempo_estimado": "2-3 horas",
+      "recursos": [
+        "Data cleaning con pandas: https://pandas.pydata.org/docs/user_guide/missing_data.html",
+        "Manejo de outliers: https://pandas.pydata.org/docs/user_guide/groupby.html"
+      ],
+      "pasos": [
+        "Documentar las técnicas utilizadas para tratar missing values y outliers en un archivo README o en los notebooks.",
+        "Incluir visualizaciones que muestren la distribución de los datos antes y después del tratamiento de outliers.",
+        "Asegurarte de que la documentación sea clara y accesible para otros desarrolladores."
+      ],
+      "criterio_relacionado": "Limpieza y Tratamiento de Datos",
+      "nivel_dificultad": "intermedio"
+    }
+  ],
+  "alertas": [],
+  "timestamp": "2025-09-23T14:57:22.479296",
+  "agente_version": "1.0.0"
+}

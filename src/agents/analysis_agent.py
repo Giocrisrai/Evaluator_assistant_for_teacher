@@ -6,11 +6,18 @@ Basado en la configuración de GitHub Models del proyecto de curso
 
 import os
 import json
+import sys
 from typing import List, Dict, Any
 from dataclasses import dataclass
 from datetime import datetime
 import openai
+import requests
 from dotenv import load_dotenv
+
+# Agregar src al path
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+
+from config import Config
 
 # Cargar variables de entorno
 load_dotenv()
@@ -29,12 +36,29 @@ class AnalysisAgent:
     """Agente inteligente para análisis de evaluaciones."""
     
     def __init__(self):
-        """Inicializa el agente con configuración de GitHub Models."""
-        self.client = openai.OpenAI(
-            base_url=os.getenv("OPENAI_BASE_URL", "https://models.inference.ai.azure.com"),
-            api_key=os.getenv("GITHUB_TOKEN")
-        )
-        self.model = "gpt-4o-mini"
+        """Inicializa el agente con configuración centralizada."""
+        self.provider = Config.LLM_PROVIDER
+        
+        # Inicializar atributos por defecto
+        self.client = None
+        self.ollama_url = None
+        
+        if self.provider == "github":
+            self.client = openai.OpenAI(
+                base_url=Config.LLM_PROVIDERS["github"]["base_url"],
+                api_key=Config.GITHUB_TOKEN
+            )
+            self.model = "gpt-4o-mini"
+        elif self.provider == "ollama":
+            self.ollama_url = Config.LLM_PROVIDERS["ollama"]["base_url"]
+            self.model = "llama3:latest"
+        else:
+            # Fallback a GitHub Models
+            self.client = openai.OpenAI(
+                base_url=Config.LLM_PROVIDERS["github"]["base_url"],
+                api_key=Config.GITHUB_TOKEN
+            )
+            self.model = "gpt-4o-mini"
         
     def analyze_evaluation_trends(self, evaluations: List[Dict]) -> List[EvaluationInsight]:
         """Analiza tendencias en múltiples evaluaciones."""
@@ -42,19 +66,43 @@ class AnalysisAgent:
         prompt = self._build_trend_analysis_prompt(evaluations)
         
         try:
-            response = self.client.chat.completions.create(
-                model=self.model,
-                messages=[
-                    {
-                        "role": "system", 
-                        "content": "Eres un experto analista educativo especializado en identificar patrones y tendencias en evaluaciones de proyectos de Machine Learning. Tu trabajo es encontrar insights valiosos que ayuden a mejorar la enseñanza."
-                    },
-                    {"role": "user", "content": prompt}
-                ],
-                temperature=0.3
-            )
+            if self.provider == "github":
+                response = self.client.chat.completions.create(
+                    model=self.model,
+                    messages=[
+                        {
+                            "role": "system", 
+                            "content": "Eres un experto analista educativo especializado en identificar patrones y tendencias en evaluaciones de proyectos de Machine Learning. Tu trabajo es encontrar insights valiosos que ayuden a mejorar la enseñanza."
+                        },
+                        {"role": "user", "content": prompt}
+                    ],
+                    temperature=0.3
+                )
+                insights_text = response.choices[0].message.content
+                
+            elif self.provider == "ollama":
+                # Ollama API call
+                ollama_payload = {
+                    "model": self.model,
+                    "prompt": f"Eres un experto analista educativo especializado en identificar patrones y tendencias en evaluaciones de proyectos de Machine Learning. SIEMPRE responde en ESPAÑOL. Tu trabajo es encontrar insights valiosos que ayuden a mejorar la enseñanza.\n\n{prompt}",
+                    "stream": False,
+                    "options": {
+                        "temperature": 0.3,
+                        "num_predict": 4000
+                    }
+                }
+                
+                response = requests.post(
+                    f"{self.ollama_url}/api/generate",
+                    json=ollama_payload,
+                    timeout=120
+                )
+                
+                if response.status_code == 200:
+                    insights_text = response.json()["response"]
+                else:
+                    raise Exception(f"Error de Ollama: {response.status_code} - {response.text}")
             
-            insights_text = response.choices[0].message.content
             return self._parse_insights(insights_text)
             
         except Exception as e:

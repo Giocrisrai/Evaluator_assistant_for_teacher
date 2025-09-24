@@ -36,7 +36,7 @@ def setup_environment():
     
     print("✅ Configuración validada correctamente")
 
-def evaluate_single_repository(repo_url: str, rubrica_name: str = "kedro"):
+def evaluate_single_repository(repo_url: str, rubrica_name: str = "kedro", use_advanced: bool = False):
     """Evalúa un repositorio individual."""
     
     setup_environment()
@@ -45,7 +45,8 @@ def evaluate_single_repository(repo_url: str, rubrica_name: str = "kedro"):
     evaluador = RubricaEvaluator(
         github_token=Config.GITHUB_TOKEN,
         llm_provider=Config.LLM_PROVIDER,
-        llm_api_key=Config.LLM_API_KEY
+        llm_api_key=Config.LLM_API_KEY,
+        use_advanced=use_advanced
     )
     
     # Cargar rúbrica
@@ -224,6 +225,7 @@ if __name__ == "__main__":
     parser.add_argument("--repos-file", type=str, help="Archivo con lista de URLs")
     parser.add_argument("--rubrica", type=str, default="kedro", help="Tipo de rúbrica")
     parser.add_argument("--provider", type=str, help="Proveedor LLM (github/gemini/huggingface)")
+    parser.add_argument("--advanced", action="store_true", help="Usar evaluador avanzado con meta-prompting")
     
     args = parser.parse_args()
     
@@ -233,7 +235,7 @@ if __name__ == "__main__":
     
     if args.repo:
         # Evaluar repositorio individual
-        evaluate_single_repository(args.repo, args.rubrica)
+        evaluate_single_repository(args.repo, args.rubrica, use_advanced=args.advanced)
         
     elif args.repos_file:
         # Evaluar múltiples repositorios
@@ -289,3 +291,4 @@ if __name__ == "__main__":
                 
             else:
                 print("❌ Opción inválida")
+

@@ -6,11 +6,18 @@ Monitorea el progreso de estudiantes y detecta patrones preocupantes
 
 import os
 import json
+import sys
 from typing import List, Dict, Any, Optional
 from dataclasses import dataclass
 from datetime import datetime, timedelta
 import openai
+import requests
 from dotenv import load_dotenv
+
+# Agregar src al path
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+
+from config import Config
 
 # Cargar variables de entorno
 load_dotenv()
@@ -43,12 +50,29 @@ class MonitoringAgent:
     """Agente que monitorea el progreso y detecta alertas."""
     
     def __init__(self):
-        """Inicializa el agente con configuración de GitHub Models."""
-        self.client = openai.OpenAI(
-            base_url=os.getenv("OPENAI_BASE_URL", "https://models.inference.ai.azure.com"),
-            api_key=os.getenv("GITHUB_TOKEN")
-        )
-        self.model = "gpt-4o-mini"
+        """Inicializa el agente con configuración centralizada."""
+        self.provider = Config.LLM_PROVIDER
+        
+        # Inicializar atributos por defecto
+        self.client = None
+        self.ollama_url = None
+        
+        if self.provider == "github":
+            self.client = openai.OpenAI(
+                base_url=Config.LLM_PROVIDERS["github"]["base_url"],
+                api_key=Config.GITHUB_TOKEN
+            )
+            self.model = "gpt-4o-mini"
+        elif self.provider == "ollama":
+            self.ollama_url = Config.LLM_PROVIDERS["ollama"]["base_url"]
+            self.model = "llama3:latest"
+        else:
+            # Fallback a GitHub Models
+            self.client = openai.OpenAI(
+                base_url=Config.LLM_PROVIDERS["github"]["base_url"],
+                api_key=Config.GITHUB_TOKEN
+            )
+            self.model = "gpt-4o-mini"
         
         # Umbrales para alertas
         self.thresholds = {

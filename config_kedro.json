@@ -1,0 +1,58 @@
+{
+  "sistema": {
+    "nombre": "Evaluador de Proyectos Kedro ML",
+    "version": "1.0.0",
+    "curso": "MLY0100 - Machine Learning",
+    "evaluacion": "Parcial 1 - Proyecto Práctico (70%)"
+  },
+  
+  "criterios_evaluacion": [
+    {"id": 1, "nombre": "Estructura y Configuración Kedro", "peso": 0.10},
+    {"id": 2, "nombre": "Catálogo de Datos (mínimo 3)", "peso": 0.10},
+    {"id": 3, "nombre": "Nodos y Funciones", "peso": 0.10},
+    {"id": 4, "nombre": "Pipelines", "peso": 0.10},
+    {"id": 5, "nombre": "Análisis Exploratorio (EDA)", "peso": 0.10},
+    {"id": 6, "nombre": "Limpieza de Datos", "peso": 0.10},
+    {"id": 7, "nombre": "Feature Engineering", "peso": 0.10},
+    {"id": 8, "nombre": "Identificación de Targets", "peso": 0.10},
+    {"id": 9, "nombre": "Documentación y Notebooks", "peso": 0.10},
+    {"id": 10, "nombre": "Reproducibilidad", "peso": 0.10}
+  ],
+  
+  "escala_notas": {
+    "100": 7.0,
+    "90": 6.5,
+    "80": 6.0,
+    "70": 5.5,
+    "60": 5.0,
+    "50": 4.5,
+    "40": 4.0,
+    "30": 3.5,
+    "20": 3.0,
+    "10": 2.0,
+    "0": 1.0,
+    "aprobacion": 4.0
+  },
+  
+  "bonificaciones": {
+    "kedro_viz": 0.3,
+    "tests_unitarios": 0.5,
+    "ci_cd": 0.3,
+    "docker": 0.2,
+    "dashboard": 0.5
+  },
+  
+  "penalizaciones": {
+    "entrega_tardia_por_dia": 0.5,
+    "dataset_faltante": 1.0,
+    "proyecto_no_ejecuta": 2.0,
+    "sin_documentacion": 1.0
+  },
+  
+  "configuracion": {
+    "evaluaciones_paralelas": 3,
+    "timeout_segundos": 300,
+    "usar_cache": true,
+    "formatos_salida": ["json", "html", "markdown", "excel"]
+  }
+}
